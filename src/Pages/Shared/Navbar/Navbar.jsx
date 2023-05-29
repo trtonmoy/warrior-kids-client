@@ -39,9 +39,16 @@ const Navbar = () => {
               <li>
                 <Link to="/register"> Register </Link>
               </li>
+              <li>
+                <Link to="/login"> Login </Link>
+              </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Warrior Kids</a>
+          <Link to="/">
+            <button className="btn text-purple-950 hover:text-white font-extrabold bg-purple-400 hover:bg-purple-800 btn-ghost normal-case text-xl">
+              Warrior Kids
+            </button>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal font-bold px-1">
@@ -56,6 +63,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/register"> Register </Link>
+            </li>
+            <li>
+              <Link to="/login"> Login </Link>
             </li>
           </ul>
         </div>
