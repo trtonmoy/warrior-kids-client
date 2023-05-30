@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  const { createUser, setUser } = useContext(AuthContext);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirm = form.confirmPassword.value;
+    console.log(email, password, confirm);
+
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        // setUser(loggedUser);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  };
+
   return (
     <div>
       <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-400 to-purple-500">
@@ -10,7 +32,7 @@ const Register = () => {
             <h2 className="text-3xl text-center text-gray-800 font-bold mb-6">
               Register
             </h2>
-            <form>
+            <form onSubmit={handleRegister}>
               <div className="mb-4">
                 <label
                   className="block text-gray-800 text-sm font-bold mb-2"
@@ -19,6 +41,7 @@ const Register = () => {
                   Name
                 </label>
                 <input
+                  name="name"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
                   id="name"
                   type="text"
@@ -33,6 +56,7 @@ const Register = () => {
                   Email
                 </label>
                 <input
+                  name="email"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   type="email"
@@ -47,10 +71,26 @@ const Register = () => {
                   Password
                 </label>
                 <input
+                  name="password"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
                   id="password"
                   type="password"
                   placeholder="Enter your password"
+                />
+              </div>
+              <div className="mb-6">
+                <label
+                  className="block text-gray-800 text-sm font-bold mb-2"
+                  htmlFor="confirm_password"
+                >
+                  Password
+                </label>
+                <input
+                  name="confirmPassword"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Confirm your password"
                 />
               </div>
               <div className="flex items-center justify-between">

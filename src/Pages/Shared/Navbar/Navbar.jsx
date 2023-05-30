@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Tooltip as ReactTooltip, Tooltip } from "react-tooltip";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, setLoading, LogOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    setLoading(true);
+    LogOut();
+  };
+
   return (
     <nav>
       <div className="navbar bg-purple-200">
@@ -37,10 +46,10 @@ const Navbar = () => {
                 <Link to="/alltoys"> All Toys </Link>
               </li>
               <li>
-                <Link to="/register"> Register </Link>
+                <Link to="/login"> Login </Link>
               </li>
               <li>
-                <Link to="/login"> Login </Link>
+                <Link to="/register"> Register </Link>
               </li>
             </ul>
           </div>
@@ -62,16 +71,51 @@ const Navbar = () => {
               <Link to="/alltoys"> All Toys </Link>
             </li>
             <li>
+              <Link to="/addtoys"> Add Toys </Link>
+            </li>
+            {user ? (
+              <li>
+                <Link to="/register">
+                  {" "}
+                  <button onClick={handleLogOut}>Log Out</button>{" "}
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/login"> Login </Link>
+              </li>
+            )}
+
+            <li>
               <Link to="/register"> Register </Link>
             </li>
-            <li>
-              <Link to="/login"> Login </Link>
-            </li>
+            {user && (
+              <>
+                <li>
+                  <h6 id="userName" className="font-bold text-purple-800">
+                    {user.displayName}
+                  </h6>
+                </li>
+                <li>
+                  <div className="w-10">
+                    <img
+                      id="userPhoto"
+                      className="rounded-full"
+                      src={user.photoURL}
+                      alt=""
+                    />
+                    <Tooltip
+                      anchorSelect="#userPhoto"
+                      place="top"
+                      content={user.displayName}
+                    ></Tooltip>
+                  </div>
+                </li>
+              </>
+            )}
           </ul>
         </div>
-        <div className="navbar-end">
-          <img src="" alt="" />
-        </div>
+        <div className="navbar-end"></div>
       </div>
     </nav>
   );
