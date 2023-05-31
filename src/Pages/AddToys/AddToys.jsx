@@ -31,7 +31,7 @@ const AddToys = () => {
     };
     console.log(newToy);
 
-    fetch("http://localhost:5000/newtoy", {
+    fetch("https://warrior-kids-server.vercel.app/newtoy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: "/alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("https://warrior-kids-server.vercel.app/products"),
       },
       {
         path: "/addtoys",
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             <MyToy></MyToy>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/newtoy"),
+        loader: () => fetch("https://warrior-kids-server.vercel.app/newtoy"),
       },
       {
         path: "/newtoy/:id",
@@ -52,13 +52,13 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/newtoy/${params.id}`),
+          fetch(`https://warrior-kids-server.vercel.app/newtoy/${params.id}`),
       },
       {
         path: "/update/:id",
         element: <UpdateToy></UpdateToy>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/newtoy/${params.id}`),
+          fetch(`https://warrior-kids-server.vercel.app/newtoy/${params.id}`),
       },
       {
         path: "/blog",
@@ -80,7 +80,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://warrior-kids-server.vercel.app/products/${params.id}`),
       },
     ],
   },

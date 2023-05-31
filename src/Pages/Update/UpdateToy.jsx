@@ -46,7 +46,7 @@ const UpdateToy = () => {
     };
     console.log(updatedToy);
 
-    fetch(`http://localhost:5000/newtoy/${_id}`, {
+    fetch(`https://warrior-kids-server.vercel.app/newtoy/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
