@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
   const { createUser, setUser } = useContext(AuthContext);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -12,11 +14,25 @@ const Register = () => {
     const password = form.password.value;
     const confirm = form.confirmPassword.value;
     console.log(email, password, confirm);
+    if (password !== confirm) {
+      setError("password does not matched!");
+    }
+    if (!/[A-Z]/.test(password)) {
+      setError("Please use an uppercase character.");
+      return;
+    }
+
+    if (!/[0-9]/.test(password)) {
+      setError("Please use number");
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        setSuccess("User has been created successfully..");
+        form.reset();
         // setUser(loggedUser);
       })
       .catch((err) => {
@@ -113,6 +129,8 @@ const Register = () => {
                 Login
               </button>
             </Link>
+            <p className="text-lg font-medium text-yellow-500"> {success} </p>
+            <p className="text-lg font-medium text-red-600"> {error} </p>
           </p>
         </div>
       </div>

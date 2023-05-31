@@ -21,6 +21,7 @@ const UpdateToy = () => {
   } = toy;
 
   const handleUpdateToy = (e) => {
+    e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -56,6 +57,7 @@ const UpdateToy = () => {
       .then((data) => {
         console.log("update", data);
         if (data.modifiedCount > 0) {
+          // return alert("updated buddy");
           Swal.fire({
             title: "Error!",
             text: "Do you want to continue",

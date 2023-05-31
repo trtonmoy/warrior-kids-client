@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
+import { AuthContext, auth } from "../../provider/AuthProvider";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
+const provider = new GoogleAuthProvider();
 const Login = () => {
-  const { SignIn, googleSignIn, setLoading } = useContext(AuthContext);
+  const { SignIn, setLoading, setUser } = useContext(AuthContext);
+  const [success, setSuccess] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,7 +33,13 @@ const Login = () => {
   };
 
   const handleGoogleSignIn = () => {
-    googleSignIn();
+    setLoading(true);
+    signInWithPopup(auth, provider).then((res) => {
+      const user = res.user;
+      setUser(user);
+      setSuccess("Logged In successfully..");
+      navigate(from, { replace: true });
+    });
   };
 
   return (
@@ -108,6 +117,7 @@ const Login = () => {
                 Sign Up
               </button>
             </Link>
+            <p className="text-lg font-medium text-yellow-500"> {success} </p>
           </p>
         </div>
       </div>
