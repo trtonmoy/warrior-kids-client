@@ -45,7 +45,7 @@ const AddToys = () => {
           Swal.fire({
             title: "Success!",
             text: "Your new Toy has been added successfully",
-            icon: "error",
+            icon: "success",
             confirmButtonText: "Cool",
           });
         }

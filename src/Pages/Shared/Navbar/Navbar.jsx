@@ -70,16 +70,21 @@ const Navbar = () => {
             <li>
               <Link to="/alltoys"> All Toys </Link>
             </li>
-            <li>
-              <Link to="/addtoys"> Add Toys </Link>
-            </li>
+
             {user ? (
-              <li>
-                <Link to="/register">
-                  {" "}
-                  <button onClick={handleLogOut}>Log Out</button>{" "}
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link to="/register">
+                    <button onClick={handleLogOut}>Log Out</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/addtoys"> Add Toys </Link>
+                </li>
+                <li>
+                  <Link to="/mytoy"> My Toys </Link>
+                </li>
+              </>
             ) : (
               <li>
                 <Link to="/login"> Login </Link>
