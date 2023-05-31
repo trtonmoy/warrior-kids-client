@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyToyCard = ({ toy }) => {
+const MyToyCard = ({ toy, myToys, setMyToys }) => {
   const {
     _id,
     name,
@@ -35,6 +35,8 @@ const MyToyCard = ({ toy }) => {
             console.log("delete", data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              const remaining = myToys.filter((toy) => toy._id !== id);
+              setMyToys(remaining);
             }
           });
       }
@@ -54,9 +56,11 @@ const MyToyCard = ({ toy }) => {
           <p> Toy Details : {details} </p>
         </div>
         <div className="btn-group my-auto btn-group-vertical">
-          <button className="btn bg-blue-600 hover:bg-blue-800 rounded-sm border-0 mb-5 ">
-            Details
-          </button>
+          <Link to={`/newtoy/${_id}`}>
+            <button className="btn bg-blue-600 hover:bg-blue-800 rounded-sm border-0 mb-5 ">
+              Details
+            </button>
+          </Link>
           <Link to={`/update/${_id}`}>
             <button className="btn bg-blue-600 hover:bg-blue-800 rounded-sm border-0 mb-5">
               Update

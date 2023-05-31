@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Products = ({ products }) => {
-  const { product_img, product_name, price, rating, stock, sub_category } =
+  const { id, product_img, product_name, price, rating, stock, sub_category } =
     products;
 
   return (
@@ -15,7 +16,13 @@ const Products = ({ products }) => {
       <h5 className="text-xl font-bold mx-auto"> {sub_category} </h5>
       <h6 className="text-xl font-bold mx-auto"> {price} </h6>
       <h6 className="text-xl font-bold mx-auto"> {rating} </h6>
-      <h6 className="text-xl font-bold mx-auto"> {stock} </h6>
+
+      <div className="mx-auto mt-16">
+        <h6 className="text-xl font-bold mb-5 "> {stock} </h6>
+        <Link to={`/products/${id}`}>
+          <button className="btn">details</button>
+        </Link>
+      </div>
     </section>
   );
 };
