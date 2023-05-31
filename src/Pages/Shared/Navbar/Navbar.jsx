@@ -97,16 +97,16 @@ const Navbar = () => {
                   </h6>
                 </li>
                 <li>
-                  <div className="w-10">
+                  <div className="w-20">
                     <img
                       id="userPhoto"
                       className="rounded-full"
                       src={user.photoURL}
-                      alt=""
+                      alt="profile_image"
                     />
                     <Tooltip
                       anchorSelect="#userPhoto"
-                      place="top"
+                      place="right"
                       content={user.displayName}
                     ></Tooltip>
                   </div>

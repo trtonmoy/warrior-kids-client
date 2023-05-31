@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddToys = () => {
   const { user } = useContext(AuthContext);
@@ -8,13 +9,47 @@ const AddToys = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    const email = form.email.value;
+    const sup_name = form.sup_name.value;
     const category = form.category.value;
     const price = form.price.value;
     const rating = form.rating.value;
     const stock = form.stock.value;
     const photo = form.photo.value;
     const details = form.details.value;
-    
+
+    const newToy = {
+      name,
+      sup_name,
+      email,
+      category,
+      price,
+      rating,
+      stock,
+      photo,
+      details,
+    };
+    console.log(newToy);
+
+    fetch("http://localhost:5000/newtoy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Your new Toy has been added successfully",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
 
   return (
@@ -26,8 +61,7 @@ const AddToys = () => {
             <input
               className="w-full p-2 border border-gray-300 rounded-md"
               type="text"
-              readOnly
-              defaultValue={user?.displayName}
+              name="name"
               placeholder="Enter name"
             />
           </div>
@@ -36,8 +70,10 @@ const AddToys = () => {
             <input
               className="w-full p-2 border border-gray-300 rounded-md"
               type="email"
-              name="name"
               required
+              name="email"
+              defaultValue={user.email}
+              readOnly
               placeholder="Enter email"
             />
           </div>
@@ -47,6 +83,7 @@ const AddToys = () => {
               className="w-full p-2 border border-gray-300 rounded-md"
               type="text"
               readOnly
+              name="sup_name"
               defaultValue={user?.displayName}
               placeholder="Enter supplier name"
             />

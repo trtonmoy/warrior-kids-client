@@ -5,7 +5,7 @@ import CategoryTabs from "./CategoryTabs";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       {/* Banner */}
       <Banner></Banner>
 
