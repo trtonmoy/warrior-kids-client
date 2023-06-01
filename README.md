@@ -1,16 +1,18 @@
 "# b7a11-toy-marketplace-server-side-trtonmoy"
 "# b7a11-toy-marketplace-server-side-trtonmoy"
 
-#Warrior Kids is a LEGO toy station.
+# Live Link : https://warrior-kids.web.app/
 
--Visitors can view some products as demo
+# Warrior Kids is a LEGO toy station.
 
--Visitors have to log in to see details of any product.
+- Visitors can view some products as demo
 
--Visitors also can add any toy as their favorite list.
+- Visitors have to log in to see details of any product.
 
--Visitors can modify their list and they can them erase too.
+- Visitors also can add any toy as their favorite list.
 
--Our store locations have been added.
+- Visitors can modify their list and they can them erase too.
 
--You can know more about Us from about section.
+- Our store locations have been added.
+
+- You can know more about Us from about section.
