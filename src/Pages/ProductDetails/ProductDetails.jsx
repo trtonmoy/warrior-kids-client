@@ -1,9 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const ProductDetails = () => {
   const product = useLoaderData();
-  console.log(product);
+  // console.log(product);
+  useTitle('Details');
 
   const {
     product_name,

@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Banner = () => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   return (
     <section className="relative">
       <div className="max-w-screen ">
@@ -10,7 +16,11 @@ const Banner = () => {
           alt=""
         />
       </div>
-      <div className="absolute bottom-8 left-5">
+      <div
+        data-aos="fade-down"
+        data-aos-duration="600"
+        className="absolute bottom-8 left-5"
+      >
         <h1 className="text-5xl tracking-wider font-extrabold mb-5">
           {" "}
           Warrior Kids: Your One-Stop <br /> Destination for LEGO Adventures"

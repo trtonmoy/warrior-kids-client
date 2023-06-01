@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../hooks/useTitle";
 
 const Blogs = () => {
+  useTitle('Blogs');
   return (
     <section>
       <div className="bg-gray-100 min-h-screen">
@@ -81,13 +83,21 @@ const Blogs = () => {
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 mb-6">
               <h2 className="text-xl font-bold mb-2">
-              What is MongoDB aggregate and how does it work ?
+                What is MongoDB aggregate and how does it work ?
               </h2>
               <p className="text-gray-600 mb-4">
-              MongoDB's `aggregate` is a powerful method that allows for complex data processing and analysis within the database. It offers a flexible framework for performing operations like filtering, grouping, sorting, and aggregating data. The `aggregate` method takes an array of stages as input, where each stage represents a specific operation in the data pipeline. These stages can be used to transform and manipulate the data, perform computations, and generate meaningful results.
-              
-              <br />
-              <br /> By leveraging the aggregation pipeline, MongoDB's `aggregate` enables efficient and scalable data aggregation and analysis directly within the database.
+                MongoDB's `aggregate` is a powerful method that allows for
+                complex data processing and analysis within the database. It
+                offers a flexible framework for performing operations like
+                filtering, grouping, sorting, and aggregating data. The
+                `aggregate` method takes an array of stages as input, where each
+                stage represents a specific operation in the data pipeline.
+                These stages can be used to transform and manipulate the data,
+                perform computations, and generate meaningful results.
+                <br />
+                <br /> By leveraging the aggregation pipeline, MongoDB's
+                `aggregate` enables efficient and scalable data aggregation and
+                analysis directly within the database.
               </p>
               <div className="flex items-center text-gray-500 text-sm">
                 <span className="mr-2">Asked by:</span>

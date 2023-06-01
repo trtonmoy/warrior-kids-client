@@ -4,8 +4,10 @@ import Gallery from "./Gallery";
 import CategoryTabs from "./CategoryTabs";
 import StoreLocation from "./StoreLocation";
 import AboutUs from "./AboutUs";
+import useTitle from "../../../hooks/useTitle";
 
 const Home = () => {
+  useTitle('Home');
   return (
     <div className="">
       {/* Banner */}

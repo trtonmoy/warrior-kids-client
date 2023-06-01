@@ -2,9 +2,11 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Products from "../Products/Products";
 import ProductsRow from "../Products/ProductsRow";
+import useTitle from "../../hooks/useTitle";
 
 const AllToys = () => {
   const products = useLoaderData();
+  useTitle('All Toy');
   return (
     <div>
       {/* Products Section */}
